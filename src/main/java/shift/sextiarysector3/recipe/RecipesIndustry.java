@@ -13,25 +13,25 @@ public class RecipesIndustry {
     public static void addRecipes(CraftingManager p_77608_1_) {
 
         //plasticブロック
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSBlocks.plasticBlock, 1),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.plasticBlock, 1),
                 new Object[] {
                         "xxx", "xxx", "xxx",
                         'x', "plastic"
                 }));
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSBlocks.rubberBlock, 1),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.rubberBlock, 1),
                 new Object[] {
                         "xxx", "xxx", "xxx",
                         'x', "rubber"
                 }));
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSItems.rubberGloves, 1),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSItems.rubberGloves, 1),
                 new Object[] {
                         " x", "x ",
                         'x', "rubber"
                 }));
 
-        p_77608_1_.getRecipeList().add(new ShapelessOreRecipe(new ItemStack(SSItems.blueGel, 1),
+        shift.sextiarysector3.recipe.RH.reg(new ShapelessOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSItems.blueGel, 1),
                 new Object[] {
                         "dustBluestone",
                         "slimeball"
@@ -56,7 +56,7 @@ public class RecipesIndustry {
                 "Orange",
                 "White"
         };
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSBlocks.plasticChest, 1),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.plasticChest, 1),
                 new Object[] {
                         "xxx", "x x", "xxx",
                         'x', "plastic"
@@ -65,14 +65,14 @@ public class RecipesIndustry {
         for (int i = 0; i < dyes.length; i++) {
 
             int meta = 15 - i;
-            p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSBlocks.plasticColorChest[i], 1),
+            shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.plasticColorChest[i], 1),
                     new Object[] {
                             "xxx", "xyx", "xxx",
                             'x', "plastic",
                             'y', "dye" + dyes[meta]
                     }));
 
-            p_77608_1_.getRecipeList().add(new ShapelessOreRecipe(new ItemStack(SSBlocks.plasticColorChest[i], 1),
+            shift.sextiarysector3.recipe.RH.reg(new ShapelessOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.plasticColorChest[i], 1),
                     new Object[] {
                             "dye" + dyes[meta],
                             "chestPlastic"
@@ -89,7 +89,7 @@ public class RecipesIndustry {
         };
         for (int i = 0; i < MATERIAL.length; i++) {
 
-            p_77608_1_.getRecipeList().add(new ShapedOreRecipe(GEAR[i],
+            shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, GEAR[i],
                     new Object[] {
                             " x ", "xyx", " x ",
                             'x', MATERIAL[i],
@@ -117,7 +117,7 @@ public class RecipesIndustry {
         };
         for (int i = 0; i < PLANKS.length; i++) {
 
-            p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSBlocks.woodScaffold, 16, i),
+            shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.woodScaffold, 16, i),
                     new Object[] {
                             "xxx", "yzy", "yzy",
                             'x', PLANKS[i],
@@ -127,7 +127,7 @@ public class RecipesIndustry {
 
         }
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSBlocks.woodShaft, 4),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.woodShaft, 4),
                 new Object[] {
                         "xzx", "xyx", "xzx",
                         'x', "plankWood",
@@ -135,7 +135,7 @@ public class RecipesIndustry {
                         'z', SSItems.blueGel
                 }));
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSBlocks.woodGearBox),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.woodGearBox),
                 new Object[] {
                         "xzx", "zyz", "xzx",
                         'x', "plankWood",
@@ -143,7 +143,7 @@ public class RecipesIndustry {
                         'z', "gearWood"
                 }));
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSBlocks.conveyor, 2),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.conveyor, 2),
                 new Object[] {
                         "xxx", "yzy",
                         'x', "rubber",
@@ -151,7 +151,7 @@ public class RecipesIndustry {
                         'z', "dustBluestone"
                 }));
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSBlocks.smallWindmill, 1),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.smallWindmill, 1),
                 new Object[] {
                         "xyx", "yzy", "xyx",
                         'x', "blockWool",
@@ -159,7 +159,7 @@ public class RecipesIndustry {
                         'z', SSBlocks.woodShaft
                 }));
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSItems.ironSpanner, 1),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSItems.ironSpanner, 1),
                 new Object[] {
                         " x ", " xx", "x  ",
                         'x', "nuggetIron"

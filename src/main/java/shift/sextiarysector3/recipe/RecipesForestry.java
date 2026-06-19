@@ -14,25 +14,25 @@ public class RecipesForestry {
     public static void addRecipes(CraftingManager p_77608_1_) {
 
         //スパイル
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSBlocks.spile, 1),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSBlocks.spile, 1),
                 new Object[] {
                         "xxx",
                         'x', "ingotIron"
                 }));
 
         //木の枝
-        p_77608_1_.getRecipeList().add(new ShapelessOreRecipe(new ItemStack(Items.STICK, 4),
+        shift.sextiarysector3.recipe.RH.reg(new ShapelessOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(Items.STICK, 4),
                 new Object[] {
                         SSItems.treeBranch
                 }));
 
         //木材
-        p_77608_1_.getRecipeList().add(new ShapelessOreRecipe(new ItemStack(Blocks.PLANKS, 4, 2),
+        shift.sextiarysector3.recipe.RH.reg(new ShapelessOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(Blocks.PLANKS, 4, 2),
                 new Object[] {
                         SSBlocks.rubberLog
                 }));
 
-        p_77608_1_.getRecipeList().add(new ShapelessOreRecipe(new ItemStack(Blocks.PLANKS, 4, 2),
+        shift.sextiarysector3.recipe.RH.reg(new ShapelessOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(Blocks.PLANKS, 4, 2),
                 new Object[] {
                         SSBlocks.mapleLog
                 }));

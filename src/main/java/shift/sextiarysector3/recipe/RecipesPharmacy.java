@@ -15,7 +15,7 @@ public class RecipesPharmacy {
 
         BrewingRecipeRegistry.addRecipe(new SSBrewingRecipe());
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(SSItems.shiningFlower, 1),
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(SSItems.shiningFlower, 1),
                 new Object[] {
                         "xxx", "xyx", "xxx",
                         'y', new ItemStack(Blocks.DOUBLE_PLANT, 1, BlockDoublePlant.EnumPlantType.SUNFLOWER.getMeta()),

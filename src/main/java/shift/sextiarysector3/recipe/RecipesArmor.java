@@ -27,7 +27,7 @@ public class RecipesArmor {
 
             for (int j = 0; j < recipeItems[i].length; ++j) {
                 ItemStack item = recipeItems[i][j];
-                p_77608_1_.getRecipeList().add(new ShapedOreRecipe(item, new Object[] { recipePatterns[j], 'X', object }));
+                shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, item, new Object[] { recipePatterns[j], 'X', object }));
             }
 
         }

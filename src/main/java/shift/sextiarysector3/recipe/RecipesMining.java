@@ -18,7 +18,7 @@ public class RecipesMining {
         Object[] oIngot = new Object[] { "ingotCopper", "ingotSilver", "gemOrichalcum" };
         Block[] block = new Block[] { SSBlocks.copperBlock, SSBlocks.silverBlock, SSBlocks.orichalcumBlock };
         for (int i = 0; i < oIngot.length; i++) {
-            p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(block[i], 1),
+            shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(block[i], 1),
                     new Object[] { "xxx", "xxx", "xxx",
                             Character.valueOf('x'), oIngot[i],
                     }));
@@ -27,7 +27,7 @@ public class RecipesMining {
         Object[] oBlock = new Object[] { "blockCopper", "blockSilver", "blockOrichalcum" };
         Item[] ingot = new Item[] { SSItems.copperIngot, SSItems.silverIngot, SSItems.orichalcumGem };
         for (int i = 0; i < oBlock.length; i++) {
-            p_77608_1_.getRecipeList().add(new ShapelessOreRecipe(new ItemStack(ingot[i], 9),
+            shift.sextiarysector3.recipe.RH.reg(new ShapelessOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(ingot[i], 9),
                     new Object[] {
                             oBlock[i]
                     }));
@@ -37,7 +37,7 @@ public class RecipesMining {
         Object[] oNugget = new Object[] { "nuggetIron", "nuggetCopper", "nuggetSilver" };
         Item[] iItem = new Item[] { Items.IRON_INGOT, SSItems.copperIngot, SSItems.silverIngot };
         for (int i = 0; i < oNugget.length; i++) {
-            p_77608_1_.getRecipeList().add(new ShapedOreRecipe(new ItemStack(iItem[i], 1),
+            shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(iItem[i], 1),
                     new Object[] { "xxx", "xxx", "xxx",
                             Character.valueOf('x'), oNugget[i],
                     }));
@@ -46,7 +46,7 @@ public class RecipesMining {
         Object[] oItem = new Object[] { "ingotIron", "ingotCopper", "ingotSilver" };
         Item[] nugget = new Item[] { SSItems.ironNugget, SSItems.copperNugget, SSItems.silverNugget };
         for (int i = 0; i < oItem.length; i++) {
-            p_77608_1_.getRecipeList().add(new ShapelessOreRecipe(new ItemStack(nugget[i], 9),
+            shift.sextiarysector3.recipe.RH.reg(new ShapelessOreRecipe((net.minecraft.util.ResourceLocation) null, new ItemStack(nugget[i], 9),
                     new Object[] {
                             oItem[i]
                     }));

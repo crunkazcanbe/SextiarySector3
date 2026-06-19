@@ -33,7 +33,7 @@ public class RecipesTool {
 
     private static void addAxe(CraftingManager p_77608_1_, String material, ItemStack item) {
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(item,
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, item,
                 new Object[] { "yy", "yx", " x",
                         Character.valueOf('y'), material,
                         Character.valueOf('x'), "stickWood",
@@ -43,7 +43,7 @@ public class RecipesTool {
 
     private static void addHoe(CraftingManager p_77608_1_, String material, ItemStack item) {
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(item,
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, item,
                 new Object[] { "yy", " x", " x",
                         Character.valueOf('y'), material,
                         Character.valueOf('x'), "stickWood",
@@ -53,7 +53,7 @@ public class RecipesTool {
 
     private static void addPickaxe(CraftingManager p_77608_1_, String material, ItemStack item) {
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(item,
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, item,
                 new Object[] { "yyy", " x ", " x ",
                         Character.valueOf('y'), material,
                         Character.valueOf('x'), "stickWood",
@@ -63,7 +63,7 @@ public class RecipesTool {
 
     private static void addShovel(CraftingManager p_77608_1_, String material, ItemStack item) {
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(item,
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, item,
                 new Object[] { "y", "x", "x",
                         Character.valueOf('y'), material,
                         Character.valueOf('x'), "stickWood",
@@ -73,7 +73,7 @@ public class RecipesTool {
 
     private static void addSword(CraftingManager p_77608_1_, String material, ItemStack item) {
 
-        p_77608_1_.getRecipeList().add(new ShapedOreRecipe(item,
+        shift.sextiarysector3.recipe.RH.reg(new ShapedOreRecipe((net.minecraft.util.ResourceLocation) null, item,
                 new Object[] { "y", "y", "x",
                         Character.valueOf('y'), material,
                         Character.valueOf('x'), "stickWood",
