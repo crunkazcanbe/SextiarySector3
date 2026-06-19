@@ -75,7 +75,7 @@ public class TileEntitySSChest extends TileEntityChest {
         BlockPos blockpos = this.pos.offset(side);
 
         if (this.isChestAt(blockpos)) {
-            TileEntity tileentity = this.worldObj.getTileEntity(blockpos);
+            TileEntity tileentity = this.world.getTileEntity(blockpos);
 
             if (tileentity instanceof TileEntitySSChest) {
                 TileEntitySSChest tileentitychest = (TileEntitySSChest) tileentity;
@@ -88,10 +88,10 @@ public class TileEntitySSChest extends TileEntityChest {
     }
 
     protected boolean isChestAt(BlockPos posIn) {
-        if (this.worldObj == null) {
+        if (this.world == null) {
             return false;
         } else {
-            Block block = this.worldObj.getBlockState(posIn).getBlock();
+            Block block = this.world.getBlockState(posIn).getBlock();
             return block instanceof BlockSSChest && ((BlockSSChest) block).chestType == this.getChestType2();
         }
     }
@@ -99,7 +99,7 @@ public class TileEntitySSChest extends TileEntityChest {
     public BlockSSChest.Type getChestType2() {
 
         if (this.cachedChestType == null) {
-            if (this.worldObj == null || !(this.getBlockType() instanceof BlockSSChest)) {
+            if (this.world == null || !(this.getBlockType() instanceof BlockSSChest)) {
                 return BlockSSChest.Type.BASIC;
             }
 
@@ -128,9 +128,9 @@ public class TileEntitySSChest extends TileEntityChest {
             }
 
             ++this.numPlayersUsing;
-            this.worldObj.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
-            this.worldObj.notifyNeighborsOfStateChange(this.pos, this.getBlockType());
-            this.worldObj.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType());
+            this.world.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
+            this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType());
+            this.world.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType());
         }
     }
 
@@ -139,9 +139,9 @@ public class TileEntitySSChest extends TileEntityChest {
 
         if (!player.isSpectator() && this.getBlockType() instanceof BlockSSChest) {
             --this.numPlayersUsing;
-            this.worldObj.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
-            this.worldObj.notifyNeighborsOfStateChange(this.pos, this.getBlockType());
-            this.worldObj.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType());
+            this.world.addBlockEvent(this.pos, this.getBlockType(), 1, this.numPlayersUsing);
+            this.world.notifyNeighborsOfStateChange(this.pos, this.getBlockType());
+            this.world.notifyNeighborsOfStateChange(this.pos.down(), this.getBlockType());
         }
     }
 

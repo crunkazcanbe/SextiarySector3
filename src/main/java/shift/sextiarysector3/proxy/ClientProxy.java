@@ -3,7 +3,6 @@ package shift.sextiarysector3.proxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.renderer.entity.Render;
@@ -12,9 +11,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
-import net.minecraft.stats.Achievement;
-import net.minecraft.stats.StatisticsManager;
 import net.minecraft.tileentity.TileEntity;
+import shift.sextiarysector3.achievement.AchievementBase;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.model.ModelLoader;
@@ -49,7 +47,7 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public EntityPlayer getClientPlayer() {
-        return Minecraft.getMinecraft().thePlayer;
+        return Minecraft.getMinecraft().player;
     }
 
     @Override
@@ -167,22 +165,8 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
-    public boolean hasAchievementUnlocked(EntityPlayer player, Achievement achievement) {
-
-        if (player instanceof EntityPlayerMP) {
-            EntityPlayerMP playerMP = (EntityPlayerMP) player;
-
-            StatisticsManager state = playerMP.getStatFile();
-
-            return state.hasAchievementUnlocked(achievement);
-        }
-
-        EntityPlayerSP playerSP = (EntityPlayerSP) player;
-
-        StatisticsManager state = playerSP.getStatFileWriter();
-
-        return state.hasAchievementUnlocked(achievement);
-
+    public boolean hasAchievementUnlocked(EntityPlayer player, AchievementBase achievement) {
+        return false; // 1.12.2 stub — achievements -> JSON advancements
     }
 
 }

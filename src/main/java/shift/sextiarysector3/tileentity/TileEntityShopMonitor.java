@@ -33,7 +33,7 @@ public class TileEntityShopMonitor extends TileEntity implements ITickable {
     @Override
     public void update() {
 
-        if (this.worldObj.isRemote) return;
+        if (this.world.isRemote) return;
 
         if (this.storage.getSpeedStored() == 0 && getOn()) {
 
@@ -49,30 +49,30 @@ public class TileEntityShopMonitor extends TileEntity implements ITickable {
 
     public void changeON() {
 
-        if (!this.worldObj.isRemote) {
+        if (!this.world.isRemote) {
             if (!this.getOn() && oldS > 0) {
 
                 //this.on = true;
-                IBlockState state = this.worldObj.getBlockState(getPos());
+                IBlockState state = this.world.getBlockState(getPos());
 
-                this.worldObj.setBlockState(pos, state.withProperty(BlockShopMonitor.SWITCH, Boolean.valueOf(true)), 3);
+                this.world.setBlockState(pos, state.withProperty(BlockShopMonitor.SWITCH, Boolean.valueOf(true)), 3);
 
             } else {
 
                 //this.on = false;
-                IBlockState state = this.worldObj.getBlockState(getPos());
-                //this.worldObj.notifyBlockUpdate(pos, state, state.withProperty(BlockShopMonitor.SWITCH, Boolean.valueOf(false)), 3);
-                this.worldObj.setBlockState(pos, state.withProperty(BlockShopMonitor.SWITCH, Boolean.valueOf(false)), 3);
+                IBlockState state = this.world.getBlockState(getPos());
+                //this.world.notifyBlockUpdate(pos, state, state.withProperty(BlockShopMonitor.SWITCH, Boolean.valueOf(false)), 3);
+                this.world.setBlockState(pos, state.withProperty(BlockShopMonitor.SWITCH, Boolean.valueOf(false)), 3);
 
             }
 
-            //this.worldObj.playSoundEffect(getPos().add(0.5, 0.5, 0.5), "random.click", 0.3F, 0.6F);
+            //this.world.playSoundEffect(getPos().add(0.5, 0.5, 0.5), "random.click", 0.3F, 0.6F);
 
-            this.worldObj.playSound(getPos().getX() + 0.5, getPos().getY() + 0.5, getPos().getZ() + 0.5, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.6F, true);
+            this.world.playSound(getPos().getX() + 0.5, getPos().getY() + 0.5, getPos().getZ() + 0.5, SoundEvents.BLOCK_LEVER_CLICK, SoundCategory.BLOCKS, 0.3F, 0.6F, true);
 
         }
 
-        //this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+        //this.world.markBlockForUpdate(xCoord, yCoord, zCoord);
     }
 
     public ItemStack getMemory() {
@@ -90,11 +90,11 @@ public class TileEntityShopMonitor extends TileEntity implements ITickable {
     }
 
     public boolean getOn() {
-        return this.worldObj.getBlockState(getPos()).getValue(BlockShopMonitor.SWITCH);
+        return this.world.getBlockState(getPos()).getValue(BlockShopMonitor.SWITCH);
     }
 
     public void setOn(boolean on) {
-        this.worldObj.getBlockState(getPos()).withProperty(BlockShopMonitor.SWITCH, Boolean.valueOf(on));
+        this.world.getBlockState(getPos()).withProperty(BlockShopMonitor.SWITCH, Boolean.valueOf(on));
     }
 
     @Override
@@ -159,8 +159,8 @@ public class TileEntityShopMonitor extends TileEntity implements ITickable {
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         this.readFromNBT(pkt.getNbtCompound());
-        IBlockState state = this.worldObj.getBlockState(getPos());
-        this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+        IBlockState state = this.world.getBlockState(getPos());
+        this.world.notifyBlockUpdate(pos, state, state, 3);
     }
 
     public class GearForceShopStorage extends GearForceStorage {

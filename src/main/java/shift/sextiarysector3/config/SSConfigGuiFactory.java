@@ -13,20 +13,17 @@ public class SSConfigGuiFactory implements IModGuiFactory {
     }
 
     @Override
-    public Class<? extends GuiScreen> mainConfigGuiClass() {
+    public boolean hasConfigGui() {
+        return true;
+    }
 
-        return SSConfigGui.class;
+    @Override
+    public GuiScreen createConfigGui(GuiScreen parentScreen) {
+        return new SSConfigGui(parentScreen);
     }
 
     @Override
     public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
-
-        return null;
-    }
-
-    @Override
-    public RuntimeOptionGuiHandler getHandlerFor(RuntimeOptionCategoryElement element) {
-
         return null;
     }
 

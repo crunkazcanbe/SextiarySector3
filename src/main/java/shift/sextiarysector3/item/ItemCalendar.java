@@ -37,7 +37,7 @@ public class ItemCalendar extends ItemSSBase {
                 Entity entity = flag ? entityIn : stack.getItemFrame();
 
                 if (worldIn == null && entity != null) {
-                    worldIn = entity.worldObj;
+                    worldIn = entity.world;
                 }
 
                 if (worldIn == null || entity == null) {
@@ -94,7 +94,7 @@ public class ItemCalendar extends ItemSSBase {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 
-        tooltip.add(SeasonManager.getInstance().getDay(playerIn.worldObj) + " Day");
+        tooltip.add(SeasonManager.getInstance().getDay(playerIn.world) + " Day");
 
     }
 }

@@ -28,13 +28,8 @@ public class SSCreativeTabs {
         }
 
         @Override
-        public Item getTabIconItem() {
-            return null;// SSBlocks.LargeFurnace.g;
-        }
-
-        @Override
         @SideOnly(Side.CLIENT)
-        public ItemStack getIconItemStack() {
+        public ItemStack getTabIconItem() {
             return new ItemStack(SSItems.orichalcumGem, 1);
         }
 
@@ -47,13 +42,8 @@ public class SSCreativeTabs {
         }
 
         @Override
-        public Item getTabIconItem() {
-            return null;// SSBlocks.LargeFurnace.g;
-        }
-
-        @Override
         @SideOnly(Side.CLIENT)
-        public ItemStack getIconItemStack() {
+        public ItemStack getTabIconItem() {
             return new ItemStack(SSBlocks.rubberLog, 1);
         }
 
@@ -66,13 +56,8 @@ public class SSCreativeTabs {
         }
 
         @Override
-        public Item getTabIconItem() {
-            return null;//SSBlocks.LargeFurnace.g;
-        }
-
-        @Override
         @SideOnly(Side.CLIENT)
-        public ItemStack getIconItemStack() {
+        public ItemStack getTabIconItem() {
             return new ItemStack(SSBlocks.orichalcumOre, 1);
         }
 
@@ -85,13 +70,8 @@ public class SSCreativeTabs {
         }
 
         @Override
-        public Item getTabIconItem() {
-            return null;//SSBlocks.LargeFurnace.g;
-        }
-
-        @Override
         @SideOnly(Side.CLIENT)
-        public ItemStack getIconItemStack() {
+        public ItemStack getTabIconItem() {
             return new ItemStack(SSItems.woodGear, 1);
         }
 
@@ -104,13 +84,8 @@ public class SSCreativeTabs {
         }
 
         @Override
-        public Item getTabIconItem() {
-            return null;//SSBlocks.LargeFurnace.g;
-        }
-
-        @Override
         @SideOnly(Side.CLIENT)
-        public ItemStack getIconItemStack() {
+        public ItemStack getTabIconItem() {
             return new ItemStack(SSItems.potionCapsule, 1);
         }
 
@@ -123,13 +98,8 @@ public class SSCreativeTabs {
         }
 
         @Override
-        public Item getTabIconItem() {
-            return null;//SSBlocks.LargeFurnace.g;
-        }
-
-        @Override
         @SideOnly(Side.CLIENT)
-        public ItemStack getIconItemStack() {
+        public ItemStack getTabIconItem() {
             return new ItemStack(SSBlocks.mapleCake, 1);
         }
 
@@ -142,13 +112,8 @@ public class SSCreativeTabs {
         }
 
         @Override
-        public Item getTabIconItem() {
-            return null;//SSBlocks.LargeFurnace.g;
-        }
-
-        @Override
         @SideOnly(Side.CLIENT)
-        public ItemStack getIconItemStack() {
+        public ItemStack getTabIconItem() {
             return new ItemStack(SSBlocks.creeperChest, 1);
         }
 

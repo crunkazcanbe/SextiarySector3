@@ -73,7 +73,7 @@ public class ModuleWarp implements IModule {
 
         if (!eF.onValidSurface()) return;
 
-        World worldObj = event.getEntity().worldObj;
+        World worldObj = event.getEntity().world;
 
         IBlockState state = worldObj.getBlockState(eF.getHangingPosition().offset(eF.getHorizontalFacing().getOpposite()));
 
@@ -98,7 +98,7 @@ public class ModuleWarp implements IModule {
             if (player instanceof EntityPlayerMP) {
                 EntityPlayerMP entityplayermp = (EntityPlayerMP) player;
 
-                if (entityplayermp.connection.getNetworkManager().isChannelOpen() && entityplayermp.worldObj == worldObj
+                if (entityplayermp.connection.getNetworkManager().isChannelOpen() && entityplayermp.world == worldObj
                         && !entityplayermp.isPlayerSleeping()) {
 
                     if (player.isRiding()) {

@@ -45,7 +45,6 @@ public class AchievementEventHandler {
 
                     byte b0 = nbttagcompound1.getByte("Type");
                     if (b0 == 3) {
-                        p.addStat(SSAchievements.creeperFirework, 1);
                     }
 
                 }
@@ -60,7 +59,7 @@ public class AchievementEventHandler {
     @SubscribeEvent
     public void LivingSleepingEvent(PlayerWakeUpEvent event) {
 
-        if (event.getEntityPlayer().worldObj.isRemote) {
+        if (event.getEntityPlayer().world.isRemote) {
             return;
         }
 
@@ -77,7 +76,7 @@ public class AchievementEventHandler {
         int y = (int) player.posY;
         int z = (int) player.posZ;
         BlockPos pos = new BlockPos(x, y, z);
-        World world = player.worldObj;
+        World world = player.world;
 
         int range = 1;
         for (int i = -range; i < range; i++) {
@@ -86,7 +85,6 @@ public class AchievementEventHandler {
 
                     if (world.isAirBlock(pos.add(i, k, j))) {
                         if (generateChest(world, pos.add(i, k, j))) {
-                            player.addStat(SSAchievements.creeperChest, 1);
                             return;
                         }
                     }

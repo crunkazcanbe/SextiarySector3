@@ -2,19 +2,16 @@ package shift.sextiarysector3.achievement;
 
 import java.util.ArrayList;
 
-import net.minecraft.stats.Achievement;
-import net.minecraft.util.text.translation.I18n;
-import net.minecraftforge.common.AchievementPage;
+/** 1.12 removed net.minecraftforge.common.AchievementPage. Stub holder. */
+public class AchievementPageBase {
 
-public class AchievementPageBase extends AchievementPage {
+    private final String name;
 
-    public AchievementPageBase(String name, ArrayList<Achievement> achievements) {
-        super(name, achievements.toArray(new Achievement[0]));
+    public AchievementPageBase(String name, ArrayList<AchievementBase> achievements) {
+        this.name = name;
     }
 
-    @Override
     public String getName() {
-        return I18n.translateToLocal(super.getName());
+        return name;
     }
-
 }

@@ -20,7 +20,7 @@ public class TileEntityCreativeGFTank extends TileEntityTickable {
 
         for (EnumFacing f : EnumFacing.VALUES) {
 
-            TileEntity te = this.worldObj.getTileEntity(getPos().offset(f));
+            TileEntity te = this.world.getTileEntity(getPos().offset(f));
             if (te == null) continue;
             if (!te.hasCapability(CapabilityGearForce.GEAR_FORCE, f.getOpposite())) continue;
 

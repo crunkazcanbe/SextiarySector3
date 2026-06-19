@@ -2,33 +2,27 @@ package shift.sextiarysector3.achievement;
 
 import java.util.ArrayList;
 
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.Achievement;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import shift.sextiarysector3.SextiarySector3;
-import shift.sextiarysector3.util.Translator;
 
-public class AchievementBase extends Achievement {
+/**
+ * 1.12 removed net.minecraft.stats.Achievement (replaced by JSON Advancements).
+ * This is a lightweight stand-in so the mod's achievement tree still constructs;
+ * it no longer drives in-game popups. (1.12.2 port stub.)
+ */
+public class AchievementBase {
 
-    private final String achievementDescription2;
+    public final String id;
+    public ItemStack theItemStack;
 
-    public AchievementBase(String p_i45302_1_, int p_i45302_3_, int p_i45302_4_, ItemStack p_i45302_5_, Achievement p_i45302_6_, ArrayList<Achievement> a) {
-        super("achievement.ss" + p_i45302_1_, "ss." + p_i45302_1_, p_i45302_3_, p_i45302_4_, p_i45302_5_, p_i45302_6_);
-        this.achievementDescription2 = "achievement.ss." + p_i45302_1_ + ".desc.unlocked";
-        a.add(this);
+    public AchievementBase(String id, int x, int y, ItemStack icon, AchievementBase parent, ArrayList<AchievementBase> a) {
+        this.id = id;
+        this.theItemStack = icon;
+        if (a != null) a.add(this);
     }
 
-    @SideOnly(Side.CLIENT)
-    public String getDescription() {
+    public AchievementBase initIndependentStat() { return this; }
 
-        if (((EntityPlayerSP) SextiarySector3.proxy.getClientPlayer()).getStatFileWriter().hasAchievementUnlocked(this)) {
-            return Translator.translateToLocal(this.achievementDescription2);
-        } else {
-            return super.getDescription();
-        }
+    public AchievementBase registerStat() { return this; }
 
-    }
-
+    public AchievementBase setSpecial() { return this; }
 }

@@ -118,7 +118,7 @@ public class TileEntityGearBox extends TileEntity implements ITickable {
         for (EnumFacing f : EnumFacing.VALUES) {
             if (connects[f.getIndex()] == ConnectionType.OUT) {
 
-                TileEntity te = this.worldObj.getTileEntity(getPos().offset(f));
+                TileEntity te = this.world.getTileEntity(getPos().offset(f));
                 if (te == null) continue;
                 if (!te.hasCapability(CapabilityGearForce.GEAR_FORCE, f.getOpposite())) continue;
 
@@ -141,8 +141,8 @@ public class TileEntityGearBox extends TileEntity implements ITickable {
             connects[side.getIndex()] = ConnectionType.values()[ct.ordinal() + 1];
         }
 
-        IBlockState state = this.worldObj.getBlockState(getPos());
-        this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+        IBlockState state = this.world.getBlockState(getPos());
+        this.world.notifyBlockUpdate(pos, state, state, 3);
 
     }
 
@@ -184,9 +184,9 @@ public class TileEntityGearBox extends TileEntity implements ITickable {
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         this.readFromNBT(pkt.getNbtCompound());
-        //this.worldObj.markBlockForUpdate(this.pos);
-        IBlockState state = this.worldObj.getBlockState(getPos());
-        this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+        //this.world.markBlockForUpdate(this.pos);
+        IBlockState state = this.world.getBlockState(getPos());
+        this.world.notifyBlockUpdate(pos, state, state, 3);
     }
 
     //Cap

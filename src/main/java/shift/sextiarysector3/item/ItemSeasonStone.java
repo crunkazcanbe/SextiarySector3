@@ -37,7 +37,7 @@ public class ItemSeasonStone extends ItemSSBase {
                 Entity entity = flag ? entityIn : stack.getItemFrame();
 
                 if (worldIn == null && entity != null) {
-                    worldIn = entity.worldObj;
+                    worldIn = entity.world;
                 }
 
                 if (worldIn == null || entity == null) {
@@ -93,7 +93,7 @@ public class ItemSeasonStone extends ItemSSBase {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
 
-        tooltip.add(SeasonManager.getInstance().getSeason(playerIn.worldObj).getTranslatedName());
+        tooltip.add(SeasonManager.getInstance().getSeason(playerIn.world).getTranslatedName());
 
     }
 

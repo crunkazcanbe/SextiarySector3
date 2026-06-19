@@ -31,7 +31,7 @@ public class ItemDepthMeter extends ItemSSBase {
                 Entity entity = (Entity) (flag ? entityIn : stack.getItemFrame());
 
                 if (worldIn == null && entity != null) {
-                    worldIn = entity.worldObj;
+                    worldIn = entity.world;
                 }
 
                 if (worldIn == null || entity == null) {

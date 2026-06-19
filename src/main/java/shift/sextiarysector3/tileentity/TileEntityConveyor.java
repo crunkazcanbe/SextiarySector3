@@ -222,7 +222,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
         if (!UtilCompat.isNullFromItemStack(inItem.getStackInSlot(0))) {
 
-            EnumFacing f = this.worldObj.getBlockState(getPos()).getValue(BlockConveyor.FACING).getOpposite();
+            EnumFacing f = this.world.getBlockState(getPos()).getValue(BlockConveyor.FACING).getOpposite();
 
             EntityConveyorItem ec = new EntityConveyorItem(worldObj,
                     this.pos.getX() + 0.5 + f.getFrontOffsetX() * 0.3,
@@ -257,7 +257,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
         power = 0;
 
-        EnumFacing mF = this.worldObj.getBlockState(getPos()).getValue(BlockConveyor.FACING);
+        EnumFacing mF = this.world.getBlockState(getPos()).getValue(BlockConveyor.FACING);
 
         //周りからGFを探す
 
@@ -273,8 +273,8 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
             if (f == mF) continue;
             if (f == mF.getOpposite()) continue;
         
-            //IBlockState state = this.worldObj.getBlockState(getPos().offset(f));
-            TileEntity tE = this.worldObj.getTileEntity(getPos().offset(f));
+            //IBlockState state = this.world.getBlockState(getPos().offset(f));
+            TileEntity tE = this.world.getTileEntity(getPos().offset(f));
         
             if (tE == null) continue;
         
@@ -303,8 +303,8 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
                 if (f == EnumFacing.UP) continue;
 
-                //IBlockState state = this.worldObj.getBlockState(getPos().offset(f));
-                TileEntity tE = this.worldObj.getTileEntity(getPos().offset(f));
+                //IBlockState state = this.world.getBlockState(getPos().offset(f));
+                TileEntity tE = this.world.getTileEntity(getPos().offset(f));
 
                 if (!(tE instanceof TileEntityConveyor)) continue;
 
@@ -331,7 +331,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
         //GF
         /*
-        TileEntity tE = this.worldObj.getTileEntity(getPos().offset(oldF));
+        TileEntity tE = this.world.getTileEntity(getPos().offset(oldF));
         
         if (tE == null) return 0;
         
@@ -344,7 +344,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
             }
         }*/
 
-        TileEntity tE = this.worldObj.getTileEntity(getPos().offset(oldF));
+        TileEntity tE = this.world.getTileEntity(getPos().offset(oldF));
 
         if (power == 0) {
             //コンベア
@@ -364,8 +364,8 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
         if (this.canRenderUpdate()) {
 
-            IBlockState state = this.worldObj.getBlockState(getPos());
-            this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+            IBlockState state = this.world.getBlockState(getPos());
+            this.world.notifyBlockUpdate(pos, state, state, 3);
 
         }
 
@@ -392,7 +392,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 
-        EnumFacing f = this.worldObj.getBlockState(getPos()).getValue(BlockConveyor.FACING);
+        EnumFacing f = this.world.getBlockState(getPos()).getValue(BlockConveyor.FACING);
 
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing == EnumFacing.UP) {
             return true;
@@ -415,7 +415,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
 
-        EnumFacing f = this.worldObj.getBlockState(getPos()).getValue(BlockConveyor.FACING);
+        EnumFacing f = this.world.getBlockState(getPos()).getValue(BlockConveyor.FACING);
 
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && facing == EnumFacing.UP) {
             return (T) this.topItem;
@@ -438,7 +438,7 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
 
     private boolean isConnectGF(EnumFacing facing) {
 
-        EnumFacing f = this.worldObj.getBlockState(getPos()).getValue(BlockConveyor.FACING).rotateY();
+        EnumFacing f = this.world.getBlockState(getPos()).getValue(BlockConveyor.FACING).rotateY();
 
         if (facing == null) return true;
         if (facing == f) return true;
@@ -479,8 +479,8 @@ public class TileEntityConveyor extends TileEntity implements ITickable {
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         this.readFromNBT(pkt.getNbtCompound());
-        IBlockState state = this.worldObj.getBlockState(getPos());
-        this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+        IBlockState state = this.world.getBlockState(getPos());
+        this.world.notifyBlockUpdate(pos, state, state, 3);
     }
 
     public class GearForceConveyorStorage extends GearForceStorage {

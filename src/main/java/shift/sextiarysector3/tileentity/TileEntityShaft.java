@@ -52,8 +52,8 @@ public class TileEntityShaft extends TileEntityTickable {
 
         //Clientと同期
         if (speed != lastSpeed) {
-            IBlockState state = this.worldObj.getBlockState(getPos());
-            this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+            IBlockState state = this.world.getBlockState(getPos());
+            this.world.notifyBlockUpdate(pos, state, state, 3);
         }
         lastSpeed = speed;
 
@@ -73,7 +73,7 @@ public class TileEntityShaft extends TileEntityTickable {
 
         EnumFacing f = this.getFacing();
 
-        TileEntity te = this.worldObj.getTileEntity(getPos().offset(f));
+        TileEntity te = this.world.getTileEntity(getPos().offset(f));
         if (te == null) return;
         if (!te.hasCapability(CapabilityGearForce.GEAR_FORCE, f.getOpposite())) return;
 
@@ -85,7 +85,7 @@ public class TileEntityShaft extends TileEntityTickable {
     }
 
     public EnumFacing getFacing() {
-        IBlockState state = this.worldObj.getBlockState(getPos());
+        IBlockState state = this.world.getBlockState(getPos());
         EnumFacing f = state.getValue(BlockShaft.FACING);
         return f;
     }
@@ -94,7 +94,7 @@ public class TileEntityShaft extends TileEntityTickable {
 
         EnumFacing f = this.getFacing().getOpposite();
 
-        TileEntity te = this.worldObj.getTileEntity(getPos().offset(f));
+        TileEntity te = this.world.getTileEntity(getPos().offset(f));
         if (te == null) return true;
         if (!te.hasCapability(CapabilityShaftHandler.SHAFT_CAPABILITY, f.getOpposite())) return true;
         IShaft is = te.getCapability(CapabilityShaftHandler.SHAFT_CAPABILITY, f.getOpposite());
@@ -121,7 +121,7 @@ public class TileEntityShaft extends TileEntityTickable {
 
         EnumFacing f = this.getFacing();
 
-        TileEntity te = this.worldObj.getTileEntity(getPos().offset(f, ofset));
+        TileEntity te = this.world.getTileEntity(getPos().offset(f, ofset));
 
         if (te == null) return false;
         if (!te.hasCapability(CapabilityShaftHandler.SHAFT_CAPABILITY, f.getOpposite())) return false;
@@ -137,7 +137,7 @@ public class TileEntityShaft extends TileEntityTickable {
 
         EnumFacing f = this.getFacing();
 
-        TileEntity te = this.worldObj.getTileEntity(getPos().offset(f, ofset));
+        TileEntity te = this.world.getTileEntity(getPos().offset(f, ofset));
 
         return te.getCapability(CapabilityShaftHandler.SHAFT_CAPABILITY, f.getOpposite());
 
@@ -175,8 +175,8 @@ public class TileEntityShaft extends TileEntityTickable {
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         this.readFromNBT(pkt.getNbtCompound());
-        IBlockState state = this.worldObj.getBlockState(getPos());
-        this.worldObj.notifyBlockUpdate(pos, state, state, 3);
+        IBlockState state = this.world.getBlockState(getPos());
+        this.world.notifyBlockUpdate(pos, state, state, 3);
     }
 
     //Cap

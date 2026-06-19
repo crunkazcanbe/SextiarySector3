@@ -49,14 +49,14 @@ public class EntityConveyorItem extends EntityItem {
             boolean flag = (int) this.prevPosX != (int) this.posX || (int) this.prevPosY != (int) this.posY || (int) this.prevPosZ != (int) this.posZ;
 
             if (flag || this.ticksExisted % 25 == 0) {
-                if (this.worldObj.getBlockState(new BlockPos(this)).getMaterial() == Material.LAVA) {
+                if (this.world.getBlockState(new BlockPos(this)).getMaterial() == Material.LAVA) {
                     this.motionY = 0.20000000298023224D;
                     this.motionX = (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F;
                     this.motionZ = (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F;
                     this.playSound(SoundEvents.ENTITY_GENERIC_BURN, 0.4F, 2.0F + this.rand.nextFloat() * 0.4F);
                 }
 
-                if (!this.worldObj.isRemote) {
+                if (!this.world.isRemote) {
                     this.searchForOtherItemsNearby();
                 }
             }
@@ -64,7 +64,7 @@ public class EntityConveyorItem extends EntityItem {
             float f = 0.98F;
 
             if (this.onGround) {
-                f = this.worldObj.getBlockState(new BlockPos(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.getEntityBoundingBox().minY) - 1, MathHelper.floor_double(this.posZ)))
+                f = this.world.getBlockState(new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ)))
                         .getBlock().slipperiness * 0.98F;
             }
 
@@ -84,11 +84,11 @@ public class EntityConveyorItem extends EntityItem {
 
             ItemStack item = this.getDataManager().get(ITEM).orNull();
 
-            if (!this.worldObj.isRemote && this.age >= lifespan) {
+            if (!this.world.isRemote && this.age >= lifespan) {
                 int hook = net.minecraftforge.event.ForgeEventFactory.onItemExpire(this, item);
                 if (hook < 0) {
 
-                    this.worldObj.spawnEntityInWorld(new EntityItem(worldObj, this.posX, this.posY, this.posZ, item));
+                    this.world.spawnEntityInWorld(new EntityItem(worldObj, this.posX, this.posY, this.posZ, item));
 
                     this.setDead();
 

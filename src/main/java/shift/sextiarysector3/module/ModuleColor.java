@@ -86,7 +86,7 @@ public class ModuleColor implements IModule {
             @Override
             public int colorMultiplier(IBlockState state, IBlockAccess worldIn, BlockPos pos, int tintIndex) {
 
-                if (SeasonManager.getInstance().getSeason(mc.theWorld) == Season.AUTUMN) return 0xFE2E2E;
+                if (SeasonManager.getInstance().getSeason(mc.world) == Season.AUTUMN) return 0xFE2E2E;
 
                 return (worldIn != null && pos != null ? BiomeColorHelper.getFoliageColorAtPos(worldIn, pos) : ColorizerFoliage.getFoliageColorBasic());
 
@@ -101,7 +101,7 @@ public class ModuleColor implements IModule {
 
                 if (tintIndex > 0) return 0xFFFFFF;
 
-                if (tintIndex == 0 && SeasonManager.getInstance().getSeason(mc.theWorld) == Season.SPRING) return 0xfce0e0;
+                if (tintIndex == 0 && SeasonManager.getInstance().getSeason(mc.world) == Season.SPRING) return 0xfce0e0;
 
                 return (worldIn != null && pos != null ? BiomeColorHelper.getFoliageColorAtPos(worldIn, pos) : ColorizerFoliage.getFoliageColorBasic());
 
@@ -116,7 +116,7 @@ public class ModuleColor implements IModule {
 
                 if (tintIndex > 0) return 0xFFFFFF;
 
-                if (tintIndex == 0 && SeasonManager.getInstance().getSeason(mc.theWorld) == Season.SPRING) return 0xf6a4f5;
+                if (tintIndex == 0 && SeasonManager.getInstance().getSeason(mc.world) == Season.SPRING) return 0xf6a4f5;
 
                 return (worldIn != null && pos != null ? BiomeColorHelper.getFoliageColorAtPos(worldIn, pos) : ColorizerFoliage.getFoliageColorBasic());
 
@@ -130,7 +130,7 @@ public class ModuleColor implements IModule {
 
                 BlockPlanks.EnumType blockplanks$enumtype = state.getValue(BlockOldLeaf.VARIANT);
 
-                if (SeasonManager.getInstance().getSeason(mc.theWorld) == Season.AUTUMN) {
+                if (SeasonManager.getInstance().getSeason(mc.world) == Season.AUTUMN) {
 
                     if (blockplanks$enumtype == BlockPlanks.EnumType.BIRCH) {
                         return 0xFF8000;

@@ -5,9 +5,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
-import net.minecraft.stats.Achievement;
-import net.minecraft.stats.StatisticsManager;
 import net.minecraft.tileentity.TileEntity;
+import shift.sextiarysector3.achievement.AchievementBase;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -46,14 +45,8 @@ public class CommonProxy {
 
     }
 
-    public boolean hasAchievementUnlocked(EntityPlayer player, Achievement achievement) {
-
-        EntityPlayerMP playerMP = (EntityPlayerMP) player;
-
-        StatisticsManager state = playerMP.getStatFile();
-
-        return state.hasAchievementUnlocked(achievement);
-
+    public boolean hasAchievementUnlocked(EntityPlayer player, AchievementBase achievement) {
+        return false; // 1.12.2 stub — achievements -> JSON advancements
     }
 
 }

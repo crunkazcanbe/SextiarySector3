@@ -28,7 +28,7 @@ public class ItemCapsule extends ItemSSBase {
     @Override
     public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
 
-        List<EntityAreaEffectCloud> list = worldIn.<EntityAreaEffectCloud> getEntitiesWithinAABB(EntityAreaEffectCloud.class, playerIn.getEntityBoundingBox().expandXyz(2.0D),
+        List<EntityAreaEffectCloud> list = worldIn.<EntityAreaEffectCloud> getEntitiesWithinAABB(EntityAreaEffectCloud.class, playerIn.getEntityBoundingBox().grow(2.0D),
                 new Predicate<EntityAreaEffectCloud>() {
                     @Override
                     public boolean apply(@Nullable EntityAreaEffectCloud p_apply_1_) {

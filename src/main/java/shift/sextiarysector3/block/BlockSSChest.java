@@ -106,7 +106,7 @@ public class BlockSSChest extends BlockSSContainer {
      */
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        EnumFacing enumfacing = EnumFacing.getHorizontal(MathHelper.floor_double(placer.rotationYaw * 4.0F / 360.0F + 0.5D) & 3).getOpposite();
+        EnumFacing enumfacing = EnumFacing.getHorizontal(MathHelper.floor(placer.rotationYaw * 4.0F / 360.0F + 0.5D) & 3).getOpposite();
         state = state.withProperty(FACING, enumfacing);
         BlockPos blockpos = pos.north();
         BlockPos blockpos1 = pos.south();
@@ -439,7 +439,7 @@ public class BlockSSChest extends BlockSSContainer {
                 i = ((TileEntityChest) tileentity).numPlayersUsing;
             }
 
-            return MathHelper.clamp_int(i, 0, 15);
+            return MathHelper.clamp(i, 0, 15);
         }
     }
 

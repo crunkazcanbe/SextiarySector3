@@ -8,7 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -108,7 +108,7 @@ public class ClientEventHandler {
         float partialTicks = event.getPartialTicks();
         EnumFacing facing = movingObjectPositionIn.sideHit;
 
-        movingObjectPositionIn = ((ItemRubberGroves) SSItems.rubberGloves).rayTrace(player.worldObj, player, false);
+        movingObjectPositionIn = ((ItemRubberGroves) SSItems.rubberGloves).rayTrace(player.world, player, false);
 
         if (execute != 0) return;
         if (movingObjectPositionIn == null) return;
@@ -129,7 +129,7 @@ public class ClientEventHandler {
 
         boolean isFacing = false;
 
-        for (IProperty<?> prop : player.worldObj.getBlockState(blockpos).getProperties().keySet()) {
+        for (IProperty<?> prop : player.world.getBlockState(blockpos).getProperties().keySet()) {
 
             if (prop.getName().equals("facing") && prop instanceof PropertyDirection) {
                 isFacing = true;
@@ -145,17 +145,17 @@ public class ClientEventHandler {
         GlStateManager.disableTexture2D();
         GlStateManager.depthMask(false);
         //BlockPos blockpos = movingObjectPositionIn.getBlockPos();
-        IBlockState iblockstate = player.worldObj.getBlockState(blockpos);
+        IBlockState iblockstate = player.world.getBlockState(blockpos);
 
         AxisAlignedBB FULL_BLOCK_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
 
         FULL_BLOCK_AABB = FULL_BLOCK_AABB.offset(blockpos);
 
-        if (iblockstate.getMaterial() != Material.AIR && player.worldObj.getWorldBorder().contains(blockpos)) {
+        if (iblockstate.getMaterial() != Material.AIR && player.world.getWorldBorder().contains(blockpos)) {
             double d0 = player.lastTickPosX + (player.posX - player.lastTickPosX) * (double) partialTicks;
             double d1 = player.lastTickPosY + (player.posY - player.lastTickPosY) * (double) partialTicks;
             double d2 = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * (double) partialTicks;
-            func_189697_a(FULL_BLOCK_AABB.expandXyz(0.0020000000949949026D).offset(-d0, -d1, -d2), 0.9F, 0.9F, 0.9F, 0.8F, facing);
+            func_189697_a(FULL_BLOCK_AABB.grow(0.0020000000949949026D).offset(-d0, -d1, -d2), 0.9F, 0.9F, 0.9F, 0.8F, facing);
         }
 
         GlStateManager.depthMask(true);
@@ -172,7 +172,7 @@ public class ClientEventHandler {
             float p_189694_14_, float p_189694_15_, EnumFacing facing) {
 
         Tessellator tessellator = Tessellator.getInstance();
-        VertexBuffer vertexbuffer = tessellator.getBuffer();
+        BufferBuilder vertexbuffer = tessellator.getBuffer();
         vertexbuffer.begin(3, DefaultVertexFormats.POSITION_COLOR);
 
         if (facing.equals(EnumFacing.UP)) {
@@ -203,7 +203,7 @@ public class ClientEventHandler {
 
     }
 
-    public static void drawLineUpDoun(VertexBuffer p_189698_0_, double p_189698_1_, double p_189698_3_, double p_189698_5_, double p_189698_7_, double p_189698_9_, double p_189698_11_,
+    public static void drawLineUpDoun(BufferBuilder p_189698_0_, double p_189698_1_, double p_189698_3_, double p_189698_5_, double p_189698_7_, double p_189698_9_, double p_189698_11_,
             float p_189698_13_, float p_189698_14_, float p_189698_15_, float p_189698_16_) {
 
         p_189698_0_.pos(p_189698_1_, p_189698_9_, p_189698_5_).color(p_189698_13_, p_189698_14_, p_189698_15_, 0).endVertex();
@@ -228,7 +228,7 @@ public class ClientEventHandler {
         p_189698_0_.pos(p_189698_1_, p_189698_9_, p_189698_5_ + 0.25).color(p_189698_13_, p_189698_14_, p_189698_15_, p_189698_16_).endVertex();
     }
 
-    public static void drawLineNorthSouth(VertexBuffer p_189698_0_, double p_189698_1_, double p_189698_3_, double p_189698_5_, double p_189698_7_, double p_189698_9_, double p_189698_11_,
+    public static void drawLineNorthSouth(BufferBuilder p_189698_0_, double p_189698_1_, double p_189698_3_, double p_189698_5_, double p_189698_7_, double p_189698_9_, double p_189698_11_,
             float p_189698_13_, float p_189698_14_, float p_189698_15_, float p_189698_16_) {
 
         p_189698_0_.pos(p_189698_1_, p_189698_3_, p_189698_5_).color(p_189698_13_, p_189698_14_, p_189698_15_, 0).endVertex();
@@ -254,7 +254,7 @@ public class ClientEventHandler {
 
     }
 
-    public static void drawLineWE(VertexBuffer p_189698_0_, double p_189698_1_, double p_189698_3_, double p_189698_5_, double p_189698_7_, double p_189698_9_, double p_189698_11_,
+    public static void drawLineWE(BufferBuilder p_189698_0_, double p_189698_1_, double p_189698_3_, double p_189698_5_, double p_189698_7_, double p_189698_9_, double p_189698_11_,
             float p_189698_13_, float p_189698_14_, float p_189698_15_, float p_189698_16_) {
 
         p_189698_0_.pos(p_189698_1_, p_189698_3_, p_189698_5_).color(p_189698_13_, p_189698_14_, p_189698_15_, 0).endVertex();
@@ -291,7 +291,7 @@ public class ClientEventHandler {
 
         GlStateManager.pushMatrix();
 
-        AbstractClientPlayer abstractclientplayer = Minecraft.getMinecraft().thePlayer;
+        AbstractClientPlayer abstractclientplayer = Minecraft.getMinecraft().player;
         boolean flag = event.getHand() == EnumHand.MAIN_HAND;
         EnumHandSide enumhandside = flag ? abstractclientplayer.getPrimaryHand() : abstractclientplayer.getPrimaryHand().opposite();
 
@@ -308,7 +308,7 @@ public class ClientEventHandler {
 
         boolean flag = p_187456_3_ != EnumHandSide.LEFT;
         float f = flag ? 1.0F : -1.0F;
-        float f1 = MathHelper.sqrt_float(p_187456_2_);
+        float f1 = MathHelper.sqrt(p_187456_2_);
         float f2 = -0.3F * MathHelper.sin(f1 * (float) Math.PI);
         float f3 = 0.4F * MathHelper.sin(f1 * ((float) Math.PI * 2F));
         float f4 = -0.4F * MathHelper.sin(p_187456_2_ * (float) Math.PI);
@@ -318,7 +318,7 @@ public class ClientEventHandler {
         float f6 = MathHelper.sin(f1 * (float) Math.PI);
         GlStateManager.rotate(f * f6 * 70.0F, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(f * f5 * -20.0F, 0.0F, 0.0F, 1.0F);
-        AbstractClientPlayer abstractclientplayer = Minecraft.getMinecraft().thePlayer;
+        AbstractClientPlayer abstractclientplayer = Minecraft.getMinecraft().player;
         //Minecraft.getMinecraft().getTextureManager().bindTexture(abstractclientplayer.getLocationSkin());
         Minecraft.getMinecraft().getTextureManager().bindTexture(rubberSkin);
         GlStateManager.translate(f * -1.0F, 3.6F, 3.5F);

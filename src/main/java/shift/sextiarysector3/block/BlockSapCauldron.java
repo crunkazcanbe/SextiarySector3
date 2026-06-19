@@ -142,15 +142,12 @@ public class BlockSapCauldron extends BlockSSBase {
                         switch (this.sap) {
                         case SAP:
                             itemstack1 = new ItemStack(SSItems.sapBottle);
-                            playerIn.addStat(SSAchievements.sapBottle, 1);
                             break;
                         case RUBBER:
                             itemstack1 = new ItemStack(SSItems.rubberBottle);
-                            playerIn.addStat(SSAchievements.rubberBottle, 1);
                             break;
                         case MAPLE:
                             itemstack1 = new ItemStack(SSItems.mapleBottle);
-                            playerIn.addStat(SSAchievements.mapleBottle, 1);
                             break;
                         default:
                             break;
@@ -220,12 +217,12 @@ public class BlockSapCauldron extends BlockSSBase {
 
         int i = ((Integer) state.getValue(LEVEL)).intValue();
 
-        worldIn.setBlockState(pos, state.withProperty(LEVEL, Integer.valueOf(MathHelper.clamp_int(i + level, 0, 3))), 2);
+        worldIn.setBlockState(pos, state.withProperty(LEVEL, Integer.valueOf(MathHelper.clamp(i + level, 0, 3))), 2);
         worldIn.updateComparatorOutputLevel(pos, this);
     }
 
     public void setWaterLevel(World worldIn, BlockPos pos, IBlockState state, int level) {
-        worldIn.setBlockState(pos, state.withProperty(LEVEL, Integer.valueOf(MathHelper.clamp_int(level, 0, 3))), 2);
+        worldIn.setBlockState(pos, state.withProperty(LEVEL, Integer.valueOf(MathHelper.clamp(level, 0, 3))), 2);
         worldIn.updateComparatorOutputLevel(pos, this);
     }
 
