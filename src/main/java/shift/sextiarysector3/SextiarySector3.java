@@ -59,7 +59,6 @@ public class SextiarySector3 {
 
         SSConfig.syncConfig();
 
-        SSCreativeTabs.initCreativeTabs();
 
         //Module
         modules.add(ModuleSap.getInstance());
@@ -74,8 +73,6 @@ public class SextiarySector3 {
 
         proxy.preInitModuleClient(event);
 
-        SSItems.initItem();
-        SSBlocks.initBlock();
         SSFluids.initFluid();
         SSEntitys.initEntity();
 

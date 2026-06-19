@@ -1,20 +1,24 @@
 package shift.sextiarysector3;
 
-import com.google.common.base.Predicate;
-
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.PotionTypes;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionHelper;
 import net.minecraft.potion.PotionType;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+/**
+ * 1.12.2: potions are a registry now. PotionTypes register via RegistryEvent<PotionType>;
+ * brewing conversions use PotionHelper.addMix(input, Ingredient, output) instead of the
+ * removed registerPotionTypeConversion / ItemPredicateInstance.
+ */
+@Mod.EventBusSubscriber(modid = SextiarySector3.MODID)
 public class SSPotions {
 
-    //ポーション効果
     public static PotionType haste;
     public static PotionType longHaste;
     public static PotionType strongHaste;
@@ -23,39 +27,33 @@ public class SSPotions {
     public static PotionType longGlowing;
     public static PotionType strongGlowing;
 
-    public static Predicate<ItemStack> predicate2 = new PotionHelper.ItemPredicateInstance(Items.REDSTONE);
-    public static Predicate<ItemStack> predicate5 = new PotionHelper.ItemPredicateInstance(Items.GLOWSTONE_DUST);
+    @SubscribeEvent
+    public static void registerPotionTypes(RegistryEvent.Register<PotionType> event) {
 
-    public static Predicate<ItemStack> predicateOrichalcum = new PotionHelper.ItemPredicateInstance(SSItems.orichalcumGem);
+        haste = new PotionType(new PotionEffect[] { new PotionEffect(MobEffects.HASTE, 3600) }).setRegistryName(SextiarySector3.MODID, "haste");
+        longHaste = new PotionType("haste", new PotionEffect[] { new PotionEffect(MobEffects.HASTE, 9600) }).setRegistryName(SextiarySector3.MODID, "long_haste");
+        strongHaste = new PotionType("haste", new PotionEffect[] { new PotionEffect(MobEffects.HASTE, 1800, 1) }).setRegistryName(SextiarySector3.MODID, "strong_haste");
 
-    public static Predicate<ItemStack> predicateShiningFlower = new PotionHelper.ItemPredicateInstance(SSItems.shiningFlower);
+        glowing = new PotionType(new PotionEffect[] { new PotionEffect(MobEffects.GLOWING, 3600) }).setRegistryName(SextiarySector3.MODID, "glowing");
+        longGlowing = new PotionType("glowing", new PotionEffect[] { new PotionEffect(MobEffects.GLOWING, 9600) }).setRegistryName(SextiarySector3.MODID, "long_glowing");
 
-    public static Predicate<ItemStack> predicate = new PotionHelper.ItemPredicateInstance(SSItems.silverNugget);
+        event.getRegistry().registerAll(haste, longHaste, strongHaste, glowing, longGlowing);
+    }
 
+    /** brewing recipes — run from preInit (types already registered by then). */
     public static void initPotion() {
 
-        haste = new PotionType(new PotionEffect[] { new PotionEffect(MobEffects.HASTE, 3600) });
-        longHaste = new PotionType("haste", new PotionEffect[] { new PotionEffect(MobEffects.HASTE, 9600) });
-        strongHaste = new PotionType("haste", new PotionEffect[] { new PotionEffect(MobEffects.HASTE, 1800, 1) });
+        Ingredient redstone = Ingredient.fromItem(Items.REDSTONE);
+        Ingredient glowstone = Ingredient.fromItem(Items.GLOWSTONE_DUST);
+        Ingredient orichalcum = Ingredient.fromItem(SSItems.orichalcumGem);
+        Ingredient shiningFlower = Ingredient.fromItem(SSItems.shiningFlower);
 
-        GameRegistry.register(haste, new ResourceLocation("haste"));
-        GameRegistry.register(longHaste, new ResourceLocation("long_haste"));
-        GameRegistry.register(strongHaste, new ResourceLocation("strong_haste"));
+        PotionHelper.addMix(PotionTypes.AWKWARD, orichalcum, haste);
+        PotionHelper.addMix(haste, redstone, longHaste);
+        PotionHelper.addMix(haste, glowstone, strongHaste);
 
-        glowing = new PotionType(new PotionEffect[] { new PotionEffect(MobEffects.GLOWING, 3600) });
-        longGlowing = new PotionType("glowing", new PotionEffect[] { new PotionEffect(MobEffects.GLOWING, 9600) });
-        //strongGlowing = new PotionType("glowing", new PotionEffect[] { new PotionEffect(MobEffects.GLOWING, 1800, 1) });
-
-        GameRegistry.register(glowing, new ResourceLocation("glowing"));
-        GameRegistry.register(longGlowing, new ResourceLocation("long_glowing"));
-        //GameRegistry.register(strongGlowing, new ResourceLocation("strong_glowing"));
-
-        PotionHelper.registerPotionTypeConversion(PotionTypes.AWKWARD, predicateOrichalcum, haste);
-        PotionHelper.registerPotionTypeConversion(haste, predicate2, longHaste);
-        PotionHelper.registerPotionTypeConversion(haste, predicate5, strongHaste);
-
-        PotionHelper.registerPotionTypeConversion(PotionTypes.AWKWARD, predicateShiningFlower, glowing);
-        PotionHelper.registerPotionTypeConversion(glowing, predicate2, longGlowing);
-
+        PotionHelper.addMix(PotionTypes.AWKWARD, shiningFlower, glowing);
+        PotionHelper.addMix(glowing, redstone, longGlowing);
     }
+
 }
